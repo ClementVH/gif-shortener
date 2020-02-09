@@ -8,7 +8,7 @@ services:
     container_name: gif-shortener-watch
     user: rust
     volumes:
-      - ./sources:/usr/src/gif-shortener
+      - .:/usr/src/gif-shortener
     entrypoint: cargo watch
 
   rust-build:
@@ -18,5 +18,5 @@ services:
     user: rust
     container_name: gif-shortener-build
     volumes:
-      - ./sources:/usr/src/gif-shortener
+      - .:/usr/src/gif-shortener
     entrypoint: cargo run
