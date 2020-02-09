@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  rust-watch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gif-shortener-watch
+    user: rust
+    volumes:
+      - ./sources:/usr/src/gif-shortener
+    entrypoint: cargo watch
+
+  rust-build:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: rust
+    container_name: gif-shortener-build
+    volumes:
+      - ./sources:/usr/src/gif-shortener
+    entrypoint: cargo run
